@@ -20,15 +20,15 @@ class StreamTest(unittest.TestCase):
 
     def test_single_png(self):
         cb = mock.Mock()
-        eachpng.handle_stream(BytesIO('pre' + eachpng.PNG_START + 'someContent' + eachpng.PNG_END + 'post'), cb)
-        cb.assert_called_once_with(eachpng.PNG_START + 'someContent' + eachpng.PNG_END)
+        eachpng.handle_stream(BytesIO(b'pre' + eachpng.PNG_START + b'someContent' + eachpng.PNG_END + b'post'), cb)
+        cb.assert_called_once_with(eachpng.PNG_START + b'someContent' + eachpng.PNG_END)
 
     def test_multiple_png(self):
         cb = mock.Mock()
         eachpng.handle_stream(BytesIO(
-            'pre' + eachpng.PNG_START + 'content1' + eachpng.PNG_END + 'mid' +
-                    eachpng.PNG_START + 'content2' + eachpng.PNG_END + 'end'), cb)
+            b'pre' + eachpng.PNG_START + b'content1' + eachpng.PNG_END + b'mid' +
+                     eachpng.PNG_START + b'content2' + eachpng.PNG_END + b'end'), cb)
 
         cb.assert_has_calls([
-            mock.call(eachpng.PNG_START + 'content1' + eachpng.PNG_END),
-            mock.call(eachpng.PNG_START + 'content2' + eachpng.PNG_END)])
+            mock.call(eachpng.PNG_START + b'content1' + eachpng.PNG_END),
+            mock.call(eachpng.PNG_START + b'content2' + eachpng.PNG_END)])

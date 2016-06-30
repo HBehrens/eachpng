@@ -13,7 +13,7 @@ PNG_END = b'\x00\x00\x00\x00IEND\xAE\x42\x60\x82'
 def handle_stream(f, callback):
     pattern_state = PNG_START
     unmatched_pattern = pattern_state
-    buffer = ''
+    buffer = b''
 
     while True:
         b = f.read(1)
@@ -21,19 +21,19 @@ def handle_stream(f, callback):
             break
 
         buffer += b
-        if b == unmatched_pattern[0]:
+        if b[0] == unmatched_pattern[0]:
             unmatched_pattern = unmatched_pattern[1:]
         else:
             unmatched_pattern = pattern_state
             if pattern_state == PNG_START:
-                buffer = ''
+                buffer = b''
 
         if len(unmatched_pattern) == 0:
             if pattern_state == PNG_START:
                 pattern_state = PNG_END
             else:
                 callback(buffer)
-                buffer = ''
+                buffer = b''
                 pattern_state = PNG_START
             unmatched_pattern = pattern_state
 
