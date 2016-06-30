@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from __future__ import print_function
 import sys
 from subprocess import Popen, PIPE
 from version import __version_info__
@@ -39,10 +40,10 @@ def handle_stream(f, callback):
 
 def main():
     if len(sys.argv) < 2 or sys.argv[1] in ['--help', '-h']:
-        print '\'eachpng\' executes command lines for each PNG from standard input '
-        print 'and forwards their output to stdout.'
-        print '\nUsage: eachpng command arg1 arg2...'
-        print '\nVersion %s' % '.'.join(str(c) for c in __version_info__)
+        print('\'eachpng\' executes command lines for each PNG from standard input ')
+        print('and forwards their output to stdout.')
+        print('\nUsage: eachpng command arg1 arg2...')
+        print('\nVersion %s' % '.'.join(str(c) for c in __version_info__))
         exit(0)
 
     def execute(buffer):
