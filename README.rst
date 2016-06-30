@@ -9,16 +9,18 @@ coming from a stream of of PNGs (which cannot be converted via ImageMagick as su
 Installing
 ----------
 
-```
-$ pip install .
-```
+.. code-block:: bash
+  
+  $ pip install .
+
 
 Running tests
 -------------
 
-```
-$ nosetests tests
-```
+.. code-block:: bash
+
+  $ nosetests tests
+
 
 Usage
 -----
@@ -30,6 +32,10 @@ Here's an example how to convert a stream of PNGs to an animated GIF. This examp
 - `eachpng` calling ImageMagick `convert` for each PNG to convert it to GIF (stream: sequence if GIFs)
 - `gifsicle` operating taking the sequence of GIFs to produce an animated GIF
 
-```
-$ seq 0 33 12000 | xargs -L 1 -I TC ./tool -t TC -o - | eachpng convert - GIF:- | gifsicle --multifile --delay 3 -O3 >out.gif
-```
+
+.. code-block:: bash
+
+  $ seq 0 33 12000 | \
+    xargs -L 1 -I TC ./tool -t TC -o - | \
+    eachpng convert - GIF:- | \
+    gifsicle --multifile --delay 3 -O3 >out.gif
