@@ -5,9 +5,9 @@ from subprocess import Popen, PIPE
 from .version import __version_info__
 
 # http://www.w3.org/TR/PNG/#5PNG-file-signature
-PNG_START = '\x89PNG\x0D\x0A\x1A\x0A'
+PNG_START = b'\x89PNG\x0D\x0A\x1A\x0A'
 # http://www.w3.org/TR/PNG/#11IEND
-PNG_END = '\x00\x00\x00\x00IEND\xAE\x42\x60\x82'
+PNG_END = b'\x00\x00\x00\x00IEND\xAE\x42\x60\x82'
 
 
 def handle_stream(f, callback):
