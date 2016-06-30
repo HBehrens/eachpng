@@ -2,7 +2,7 @@
 from __future__ import print_function
 import sys
 from subprocess import Popen, PIPE
-from version import __version_info__
+from .version import __version_info__
 
 # http://www.w3.org/TR/PNG/#5PNG-file-signature
 PNG_START = '\x89PNG\x0D\x0A\x1A\x0A'
