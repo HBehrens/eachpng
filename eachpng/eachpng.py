@@ -2,7 +2,7 @@
 from __future__ import print_function
 import sys
 from subprocess import Popen, PIPE
-from .version import __version_info__
+from .version import __version__
 
 # http://www.w3.org/TR/PNG/#5PNG-file-signature
 PNG_START = b'\x89PNG\x0D\x0A\x1A\x0A'
@@ -43,7 +43,7 @@ def main():
         print('\'eachpng\' executes command lines for each PNG from standard input ')
         print('and forwards their output to stdout.')
         print('\nUsage: eachpng command arg1 arg2...')
-        print('\nVersion %s' % '.'.join(str(c) for c in __version_info__))
+        print('\nVersion %s' % __version__)
         exit(0)
 
     def execute(buffer):
