@@ -43,7 +43,6 @@ def main():
         print 'and forwards their output to stdout.'
         print '\nUsage: eachpng command arg1 arg2...'
         print '\nVersion %s' % '.'.join(str(c) for c in __version_info__)
-        # TODO: show an example with gifsicle
         exit(0)
 
     def execute(buffer):
